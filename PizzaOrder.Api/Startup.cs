@@ -33,6 +33,11 @@ namespace PizzaOrder.Api
                 optionsAction: options => options.UseSqlServer(Configuration["ConnectionStrings:PizzaOrderDB"]),
                 contextLifetime: ServiceLifetime.Singleton);
 
+
+            services.AddCustomService();
+
+            services.AddCustomGraphQLServices();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +60,10 @@ namespace PizzaOrder.Api
             });
 
             dbContext.EnsureDataSeeding();
+
+            app.UseWebSockets();
+
+            app.UseGraphQLPlayground();
         }
     }
 }
