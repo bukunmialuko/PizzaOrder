@@ -2,6 +2,8 @@
 using GraphQL.Server;
 using Microsoft.Extensions.DependencyInjection;
 using PizzaOrder.Business.Services;
+using PizzaOrder.GraphQL.Enums;
+using PizzaOrder.GraphQL.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,5 +38,14 @@ namespace PizzaOrder.Api
             .AddDataLoader();
         }
 
+        public static void AddCustomGraphQLTypes(this IServiceCollection services)
+        {
+            services.AddSingleton<OrderDetailsType>();
+            services.AddSingleton<PizzaDetailsType>();
+            services.AddSingleton<OrderStatusEnumType>();
+            services.AddSingleton<ToppingsEnumType>();
+
+        }
+
+        }
     }
-}
