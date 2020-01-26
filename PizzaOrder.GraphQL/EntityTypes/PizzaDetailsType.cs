@@ -16,6 +16,7 @@ namespace PizzaOrder.GraphQL.Types
             Field(x => x.Name);
             Field(x => x.OrderDetailsId);
             Field(x => x.Price);
+            Field(x => x.Size);
 
             Field<StringGraphType>(
                 name: "toppings",
